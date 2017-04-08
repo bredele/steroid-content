@@ -17,6 +17,18 @@ test('should select pseudo element and return stream', assert => {
   }))
 })
 
+
+test('should select elements and return stream', assert => {
+  assert.plan(1)
+  content(
+    'button',
+    fs.createReadStream(__dirname + '/test.html')
+  ).pipe(concat(data => {
+    assert.equal(data.toString(), '<button>foo</button><button>bar</button>')
+  }))
+})
+
+
 test('should select id and return stream', assert => {
   assert.plan(1)
   content(

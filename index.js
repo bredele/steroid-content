@@ -3,7 +3,8 @@
  */
 
 const engine = require('trumpet')
-const through = require('through')
+const Readable = require('stream').Readable
+
 
 /**
  * Expose 'content' to be used primarly
@@ -30,19 +31,14 @@ function content() {
 
 content.query = function(selector, source) {
   const query = engine()
-  const dest = through(
-    function(data) {
-      this.queue(data)
-    },
-    function() {
-      this.queue(null)
-    }
-  )
-  query.selectAll(selector, function (span) {
-    span.createReadStream({
+  const dest = new Readable
+  dest._read = function(){}
+  query.selectAll(selector, function (el) {
+    el.createReadStream({
       outer: true
-    }).pipe(dest)
+    }).on('data', data => dest.push(data))
   })
+  query.on('end', () => dest.push(null))
   source.pipe(query)
   return dest
 }
