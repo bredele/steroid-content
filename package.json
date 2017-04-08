@@ -32,6 +32,8 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "concat-stream": "^1.6.0"
+    "concat-stream": "^1.6.0",
+    "through": "^2.3.8",
+    "trumpet": "^1.7.2"
   }
 }
