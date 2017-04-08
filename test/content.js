@@ -16,3 +16,13 @@ test('should select pseudo element and return stream', assert => {
     assert.equal(data.toString(), '<header>hello</header>')
   }))
 })
+
+test('should select id and return stream', assert => {
+  assert.plan(1)
+  content(
+    '#foo',
+    fs.createReadStream(__dirname + '/test.html')
+  ).pipe(concat(data => {
+    assert.equal(data.toString(), '<li id="foo"><button>foo</button></li>')
+  }))
+})
