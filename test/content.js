@@ -38,3 +38,23 @@ test('should select id and return stream', assert => {
     assert.equal(data.toString(), '<li id="foo"><button>foo</button></li>')
   }))
 })
+
+test('should select classes and return stream', assert => {
+  assert.plan(1)
+  content(
+    '.link',
+    fs.createReadStream(__dirname + '/test.html')
+  ).pipe(concat(data => {
+    assert.equal(data.toString(), '<a class="link">world</a><a class="link">world</a>')
+  }))
+})
+
+test('should select attribute and return stream', assert => {
+  assert.plan(1)
+  content(
+    '[required]',
+    fs.createReadStream(__dirname + '/test.html')
+  ).pipe(concat(data => {
+    assert.equal(data.toString(), '<input type="number" required>')
+  }))
+})
