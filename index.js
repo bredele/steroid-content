@@ -19,8 +19,8 @@ module.exports = content
  *
  */
 
-function content() {
-
+function content(params) {
+  return content.query(params.select, params.from)
 }
 
 
