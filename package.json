@@ -1,0 +1,31 @@
+{
+  "name": "steroid-content",
+  "version": "1.0.0",
+  "description": "Query select streaming html using css selectors",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bredele/steroid-content.git"
+  },
+  "keywords": [
+    "css",
+    "select",
+    "query",
+    "webcomponent",
+    "stream",
+    "steroid",
+    "template"
+  ],
+  "author": "Olvier <olivier.wietrich@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bredele/steroid-content/issues"
+  },
+  "homepage": "https://github.com/bredele/steroid-content#readme"
+}
